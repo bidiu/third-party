@@ -5,7 +5,9 @@
   "main": "dist/bundle.js",
   "scripts": {
     "typecheck": "tsc",
-    "build": "webpack",
+    "start": "webpack serve",
+    "clean": "rimraf ./dist",
+    "build": "yarn clean && webpack",
     "serve": "yarn build && ./node_modules/.bin/serve ./dist",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -21,6 +23,8 @@
     "@types/react": "16.14.10",
     "@types/react-dom": "16.9.13",
     "babel-loader": "^8.2.2",
+    "file-loader": "^6.2.0",
+    "rimraf": "^3.0.2",
     "serve": "^12.0.0",
     "typescript": "^4.3.5",
     "webpack": "^5.43.0",

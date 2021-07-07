@@ -10,6 +10,11 @@ module.exports = {
   module: {
     rules: [
       {
+        test: /\.mjs$/,
+        type: 'javascript/auto',
+        use: [],
+      },
+      {
         test: /\.(t|j)sx?$/,
         exclude: /node_modules/,
         use: {
@@ -20,5 +25,10 @@ module.exports = {
         },
       }
     ]
+  },
+  resolve: {
+    alias: {
+      'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+    }
   },
 }

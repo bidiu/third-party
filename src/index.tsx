@@ -1,14 +1,11 @@
-import React from 'react'
+import { Button, onRender } from "@archon/showroom-extensions";
+import { render } from "@remote-ui/react";
+import React from "react";
 
-(self as any).onRender((root: any) => {
-  const jsx = <div>Hello, world</div>
-  const button = root.createComponent('Button', {
-    onPress() {
-      console.log('Pressed!' + JSON.stringify(jsx));
-    },
-  });
-  button.appendChild('Click me');
-
-  root.appendChild(button);
-  root.mount();
-});
+onRender(root => {
+  render(
+    <Button style={{ backgroundColor: 'orange' }} onPress={() => console.log("Button was pressed!")}>Hello, world</Button>, 
+    root,
+  )
+  root.mount()
+})

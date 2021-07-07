@@ -8,6 +8,7 @@ interface Props {
 
 export const Banner: React.FunctionComponent<Props> = props => {
   const { text } = props
+  const [visible, setVisible] = React.useState(true)
   const [fontSize, setFontSize] = React.useState(48)
   const [height, setHeight] = React.useState(640)
 
@@ -52,9 +53,27 @@ export const Banner: React.FunctionComponent<Props> = props => {
     backgroundColor: '#00000022',
   }
 
+  const closeBtnStyle: React.CSSProperties = {
+    backgroundColor: '#00000086',
+    color: '#FFFFFF',
+    position: 'absolute',
+    top: '0',
+    right: '0',
+    padding: '4px 8px',
+    overflow: 'hidden',
+    borderBottomLeftRadius: '8px',
+    fontSize: '12px',
+    cursor: 'pointer',
+  }
+
+  if (!visible) {
+    return null
+  }
+
   return (
     <Div style={containerStyle}>
       <Div style={overlayStyle} />
+      <Div style={closeBtnStyle} onPress={() => setVisible(false)}>X</Div>
       <Paragraph style={textStyle}>{text}</Paragraph>
     </Div>
   )

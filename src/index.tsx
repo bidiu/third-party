@@ -4,6 +4,5 @@ import React from 'react';
 import { Banner } from './banner';
 
 extend('ui.banner', root => {
-  render(<Banner text="Your home office." />, root);
-  root.mount()
+  render(<Banner text="Your home office." />, root, () => root.mount());
 })

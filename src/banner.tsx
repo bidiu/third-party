@@ -1,4 +1,4 @@
-import { Div, Paragraph } from '@archon/showroom-extensions'
+import { Div, Paragraph, useShowroomState } from '@archon/showroom-extensions'
 import * as React from 'react'
 import bannerImage from './banner-bkg.jpg'
 
@@ -11,6 +11,8 @@ export const Banner: React.FunctionComponent<Props> = props => {
   const [visible, setVisible] = React.useState(true)
   const [fontSize, setFontSize] = React.useState(48)
   const [height, setHeight] = React.useState(640)
+
+  const customer = useShowroomState(state => state.customer)
 
   React.useEffect(() => {
     setTimeout(() => {
@@ -74,7 +76,7 @@ export const Banner: React.FunctionComponent<Props> = props => {
     <Div style={containerStyle}>
       <Div style={overlayStyle} />
       <Div style={closeBtnStyle} onPress={() => setVisible(false)}>X</Div>
-      <Paragraph style={textStyle}>{text}</Paragraph>
+      <Paragraph style={textStyle}>{customer.isLoggedIn ? `Welcome back, ${customer.name}.` : text}</Paragraph>
     </Div>
   )
 }

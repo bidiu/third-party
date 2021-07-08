@@ -42,6 +42,8 @@ module.exports = {
     extensions: ['.js', '.jsx', '.ts', '.tsx'],
     alias: {
       'react/jsx-runtime': require.resolve('react/jsx-runtime'),
+      'react': require.resolve('react'),
+      'react-dom': require.resolve('react-dom'),
     }
   },
   devServer: {
